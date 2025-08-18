@@ -21,3 +21,14 @@
             }
 
         }
+
+
+        let userMove; /*this gets input from the user */
+        document.getElementById("userSubmit").onclick = function() {
+            userMove = document.getElementById("userInput").value;
+            console.log(userMove);
+        }
+
+        let playerScore = 0; 
+        let computerScore = 0;
+         
