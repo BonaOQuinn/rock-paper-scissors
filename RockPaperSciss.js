@@ -44,8 +44,8 @@
         }
 
         
-        let humanScore = 0; 
-        let computerScore = 0;
+        /*let humanScore = 0; 
+          let computerScore = 0;
 
         function playRound(humanChoice, compChoice) {
             if (humanChoice == "rock" && compChoice == "scissors" || humanChoice == "scissors" && compChoice == "paper" || humanChoice == "paper" && compChoice == "rock") {
@@ -69,8 +69,56 @@
         const humanSelection = getHumanChoice(); 
         const compSelection = getComputerChoice();
 
-        playRound(humanSelection, compSelection);
+        playRound(humanSelection, compSelection); */
 
+
+        /*This function will exectute so that the rock paper scissors game is played for 5 rounds */
+        function playGame() {
+
+            /*single round function declaration*/
+            let humanScore = 0; 
+            let computerScore = 0;
+
+            function playRound(humanChoice, compChoice) {
+            if (humanChoice == "rock" && compChoice == "scissors" || humanChoice == "scissors" && compChoice == "paper" || humanChoice == "paper" && compChoice == "rock") {
+                humanScore = humanScore + 1; 
+                console.log(`Human wins that round, the score is now Human: ${humanScore} Computer: ${computerScore}`);
+            }
+
+            else if (compChoice == "rock" && humanChoice == "scissors" || compChoice == "scissors" && humanChoice == "paper" || compChoice == "paper" && humanChoice == "rock") {
+                computerScore = computerScore + 1; 
+                console.log(`Computer wins that round, the score is now Computer: ${computerScore} Human: ${humanScore}`);
+            }
+
+            else {
+                console.log("It is a tie!!")
+            }
+
+            console.log(humanChoice + " " + compChoice);
+            console.log(humanScore + " " + computerScore);
+
+
+        }
+
+        for (let i = 0; i < 5; i++){
+        const humanSelection = getHumanChoice(); /*every time the for loop is ran, humanSelection call getHumanChoice() to return a new move each round. */
+        const compSelection = getComputerChoice();
+        playRound(humanSelection, compSelection);
+        }
+
+        if (humanScore > computerScore) {
+            console.log('Human wins the game!');
+        }
+
+        else {
+            console.log('Computer wins the game!');
+        }
+
+
+
+    }
+
+    playGame(); 
 
         
          
