@@ -264,7 +264,7 @@
         })
 
 
-        /* let restartGame = () => {
+        let restartGame = () => {
             container.removeChild(rock); 
             container.removeChild(paper); 
             container.removeChild(scissors); 
@@ -276,8 +276,11 @@
             newGame.textContent = "NEW GAME"; 
             container.appendChild(newGame); 
 
-            newGame.addEventListener("click", )
-        } */
+            newGame.addEventListener("click", () => {
+                container.appendChild(button); 
+                container.removeChild(newGame); 
+            } )
+        } 
 
 
 
