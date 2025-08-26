@@ -75,6 +75,10 @@
 
 
         /*This function will exectute so that the rock paper scissors game is played for 5 rounds */
+        
+        /*Updates: 
+            - possibly change syntax for moves to switch statements
+         */
         function playGame() {
 
             /*single round function declaration*/
@@ -128,6 +132,7 @@
         - the computer will make its choice of the move for that round
         - the user will be prompted with 'rock' 'paper' 'scissors' buttons to make their choice
         - the winner of that round will be displayed along with the moves made by the user and computer
+        - winner of the game will be displayed 
         - the game will until user or comp reaches 5 points / score will be reset to 0  / new game button will prompt user
     */
 
@@ -263,12 +268,28 @@
            }
         })
 
+        let contResults = document.querySelector("#results"); //container that results will be displayed in
+
+
 
         let restartGame = () => {
+            /*results of the game are displayed */
+            let textResults = document.createElement("p"); 
+
+            if (userScore == 5) {
+                textResults.textContent = "You win the Game"; 
+            }
+
+            else {
+                textResults.textContent = "Computer wins the Game"; 
+            }
+
+            contResults.appendChild(textResults); 
+
+
             container.removeChild(rock); 
             container.removeChild(paper); 
             container.removeChild(scissors); 
-
             userScore = 0; 
             compScore = 0; 
 
@@ -279,6 +300,7 @@
             newGame.addEventListener("click", () => {
                 container.appendChild(button); 
                 container.removeChild(newGame); 
+                contResults.removeChild(textResults); 
             } )
         } 
 
