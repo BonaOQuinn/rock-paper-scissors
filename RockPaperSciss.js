@@ -128,7 +128,7 @@
         - the computer will make its choice of the move for that round
         - the user will be prompted with 'rock' 'paper' 'scissors' buttons to make their choice
         - the winner of that round will be displayed along with the moves made by the user and computer
-        - the game will last for 5 rounds like above
+        - the game will until user or comp reaches 5 points / score will be reset to 0  / new game button will prompt user
     */
 
     let container = document.querySelector("div"); //container buttons will appened / removed from
@@ -177,6 +177,16 @@
                 console.log(`Your move: ${userMove} Computer move: ${compMove}`);
                 console.log('This round is a tie');
             }
+
+            if (userScore == 5) {
+            restartGame(); 
+            console.log("You win the game!"); 
+        }
+
+        else if (compScore == 5) {
+            restartGame(); 
+            console.log("Computer wins the game!"); 
+           }
     
         })
 
@@ -204,11 +214,83 @@
                 console.log('This round is a tie');
             }            
 
+            if (userScore == 5) {
+            restartGame(); 
+            console.log("You win the game!"); 
+        }
+
+        else if (compScore == 5) {
+            restartGame(); 
+            console.log("Computer wins the game!"); 
+           }
+
 
             
         })
+
+        scissors.addEventListener("click", () => {
+            let userMove = "scissors"; 
+            let compMove = getComputerChoice(); 
+
+            if (compMove == "rock") {
+                ++compScore;
+                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
+                console.log("Computer wins this round"); 
+                console.log(`Your score:${userScore} Computer Score:${compScore}`);
+            }
+
+            else if (compMove == "paper") {
+                ++userScore; 
+                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
+                console.log("You win this round"); 
+                console.log(`Your score:${userScore} Computer Score:${compScore}`); 
+            }
+
+            else {
+                console.log(`Your move: ${userMove} Computer move: ${compMove}`);
+                console.log('This round is a tie');
+            }
+
+
+            if (userScore == 5) {
+            restartGame(); 
+            console.log("You win the game!"); 
+           }
+
+           else if (compScore == 5) {
+            restartGame(); 
+            console.log("Computer wins the game!"); 
+           }
+        })
+
+
+        /* let restartGame = () => {
+            container.removeChild(rock); 
+            container.removeChild(paper); 
+            container.removeChild(scissors); 
+
+            userScore = 0; 
+            compScore = 0; 
+
+            let newGame = document.createElement("button"); 
+            newGame.textContent = "NEW GAME"; 
+            container.appendChild(newGame); 
+
+            newGame.addEventListener("click", )
+        } */
+
+
+
+        
+
+
+
+        
+
+        
             
     })
+    
 
     playGame(); 
 
