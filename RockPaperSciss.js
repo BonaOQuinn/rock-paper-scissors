@@ -76,9 +76,7 @@
 
         /*This function will exectute so that the rock paper scissors game is played for 5 rounds */
         
-        /*Updates: 
-            - possibly change syntax for moves to switch statements
-         */
+        
         function playGame() {
 
             /*single round function declaration*/
@@ -134,6 +132,11 @@
         - the winner of that round will be displayed along with the moves made by the user and computer
         - winner of the game will be displayed 
         - the game will until user or comp reaches 5 points / score will be reset to 0  / new game button will prompt user
+
+
+        /*Updates: 
+            - possibly change syntax for moves to switch statements
+            - create functions for all the repeated if statements for the parts that display the winner of each round
     */
 
     let container = document.querySelector("div"); //container buttons will appened / removed from
@@ -157,6 +160,11 @@
         container.appendChild(paper);
         container.appendChild(scissors);
 
+        let roundCont = document.querySelector("#roundWinners");
+
+        let scoreUpdate = document.createElement("div");
+
+
         let userScore = 0; //scores are initialized 
         let compScore = 0; 
         
@@ -166,21 +174,26 @@
 
             if (compMove == "paper") {
                 ++compScore;
-                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
-                console.log("Computer wins this round"); 
-                console.log(`Your score:${userScore} Computer Score:${compScore}`);
+
+                scoreUpdate.textContent = `Your move: ${userMove} Computer move: ${compMove}`;
+                scoreUpdate.textContent = `Computer wins this round`;
+                scoreUpdate.textContent = `Your score:${userScore} Computer Score:${compScore}`; 
+                roundCont.appendChild(scoreUpdate); 
             }
 
             else if (compMove == "scissors") {
                 ++userScore; 
-                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
-                console.log("You win this round"); 
-                console.log(`Your score:${userScore} Computer Score:${compScore}`); 
+
+                scoreUpdate.textContent = `Your move: ${userMove} Computer move: ${compMove}`;
+                scoreUpdate.textContent = `You win this round`;
+                scoreUpdate.textContent = `Your score:${userScore} Computer Score:${compScore}`; 
+                roundCont.appendChild(scoreUpdate); 
             }
 
             else {
-                console.log(`Your move: ${userMove} Computer move: ${compMove}`);
-                console.log('This round is a tie');
+                scoreUpdate.textContent = `Your move: ${userMove} Computer move: ${compMove}`
+                scoreUpdate.textContent = 'This round is a tie'; 
+                roundCont.appendChild(scoreUpdate); 
             }
 
             if (userScore == 5) {
@@ -202,21 +215,26 @@
 
             if (compMove == "scissors") {
                 ++compScore;
-                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
-                console.log("Computer wins this round"); 
-                console.log(`Your score:${userScore} Computer Score:${compScore}`);
+
+                scoreUpdate.textContent = `Your move: ${userMove} Computer move: ${compMove}`;
+                scoreUpdate.textContent = `Computer wins this round`;
+                scoreUpdate.textContent = `Your score:${userScore} Computer Score:${compScore}`; 
+                roundCont.appendChild(scoreUpdate);
             }
 
             else if (compMove == "rock") {
                 ++userScore; 
-                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
-                console.log("You win this round"); 
-                console.log(`Your score:${userScore} Computer Score:${compScore}`); 
+
+                scoreUpdate.textContent = `Your move: ${userMove} Computer move: ${compMove}`;
+                scoreUpdate.textContent = `You win this round`;
+                scoreUpdate.textContent = `Your score:${userScore} Computer Score:${compScore}`; 
+                roundCont.appendChild(scoreUpdate); 
             }
 
             else {
-                console.log(`Your move: ${userMove} Computer move: ${compMove}`);
-                console.log('This round is a tie');
+                scoreUpdate.textContent = `Your move: ${userMove} Computer move: ${compMove}`
+                scoreUpdate.textContent = 'This round is a tie'; 
+                roundCont.appendChild(scoreUpdate);;
             }            
 
             if (userScore == 5) {
@@ -239,21 +257,26 @@
 
             if (compMove == "rock") {
                 ++compScore;
-                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
-                console.log("Computer wins this round"); 
-                console.log(`Your score:${userScore} Computer Score:${compScore}`);
+
+                scoreUpdate.textContent = `Your move: ${userMove} Computer move: ${compMove}`;
+                scoreUpdate.textContent = `Computer wins this round`;
+                scoreUpdate.textContent = `Your score:${userScore} Computer Score:${compScore}`; 
+                roundCont.appendChild(scoreUpdate);
             }
 
             else if (compMove == "paper") {
                 ++userScore; 
-                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
-                console.log("You win this round"); 
-                console.log(`Your score:${userScore} Computer Score:${compScore}`); 
+
+                scoreUpdate.textContent = `Your move: ${userMove} Computer move: ${compMove}`;
+                scoreUpdate.textContent = `You win this round`;
+                scoreUpdate.textContent = `Your score:${userScore} Computer Score:${compScore}`; 
+                roundCont.appendChild(scoreUpdate); 
             }
 
             else {
-                console.log(`Your move: ${userMove} Computer move: ${compMove}`);
-                console.log('This round is a tie');
+                scoreUpdate.textContent = `Your move: ${userMove} Computer move: ${compMove}`
+                scoreUpdate.textContent = 'This round is a tie'; 
+                roundCont.appendChild(scoreUpdate);
             }
 
 
@@ -277,7 +300,7 @@
             let textResults = document.createElement("p"); 
 
             if (userScore == 5) {
-                textResults.textContent = "You win the Game"; 
+                textResults.textContent = `You win the Game Your Score: ${userScore} Computer Score: ${compScore}`; 
             }
 
             else {
