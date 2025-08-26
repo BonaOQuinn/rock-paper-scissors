@@ -72,6 +72,8 @@
         playRound(humanSelection, compSelection); */
 
 
+
+
         /*This function will exectute so that the rock paper scissors game is played for 5 rounds */
         function playGame() {
 
@@ -100,8 +102,9 @@
 
         }
 
+        /*
         for (let i = 0; i < 5; i++){
-        const humanSelection = getHumanChoice(); /*every time the for loop is ran, humanSelection call getHumanChoice() to return a new move each round. */
+        const humanSelection = getHumanChoice(); //every time the for loop is ran, humanSelection call getHumanChoice() to return a new move each round.
         const compSelection = getComputerChoice();
         playRound(humanSelection, compSelection);
         }
@@ -113,10 +116,99 @@
         else {
             console.log('Computer wins the game!');
         }
-
+        */
+       
 
 
     }
+
+    /*Further UI implementation: 
+        - the game will start when the user selects start game 
+        - initialize counter for user score and computer score
+        - the computer will make its choice of the move for that round
+        - the user will be prompted with 'rock' 'paper' 'scissors' buttons to make their choice
+        - the winner of that round will be displayed along with the moves made by the user and computer
+        - the game will last for 5 rounds like above
+    */
+
+    let container = document.querySelector("div"); //container buttons will appened / removed from
+    let button = document.querySelector("button"); //main button on html page
+
+
+    button.addEventListener("click", () => {
+
+        container.removeChild(button); 
+
+        let rock = document.createElement("button"); 
+        rock.textContent = "ROCK"; 
+        
+        let paper = document.createElement("button"); 
+        paper.textContent = "PAPER"; 
+
+        let scissors = document.createElement("button"); 
+        scissors.textContent = "SCISSORS"; 
+
+        container.appendChild(rock); 
+        container.appendChild(paper);
+        container.appendChild(scissors);
+
+        let userScore = 0; //scores are initialized 
+        let compScore = 0; 
+        
+        rock.addEventListener("click", () => {
+            let userMove = "rock"; 
+            let compMove = getComputerChoice(); 
+
+            if (compMove == "paper") {
+                ++compScore;
+                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
+                console.log("Computer wins this round"); 
+                console.log(`Your score:${userScore} Computer Score:${compScore}`);
+            }
+
+            else if (compMove == "scissors") {
+                ++userScore; 
+                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
+                console.log("You win this round"); 
+                console.log(`Your score:${userScore} Computer Score:${compScore}`); 
+            }
+
+            else {
+                console.log(`Your move: ${userMove} Computer move: ${compMove}`);
+                console.log('This round is a tie');
+            }
+    
+        })
+
+
+        paper.addEventListener("click", () => {
+            let userMove = "paper"; 
+            let compMove = getComputerChoice();
+
+            if (compMove == "scissors") {
+                ++compScore;
+                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
+                console.log("Computer wins this round"); 
+                console.log(`Your score:${userScore} Computer Score:${compScore}`);
+            }
+
+            else if (compMove == "rock") {
+                ++userScore; 
+                console.log(`Your move: ${userMove} Computer move: ${compMove}`); 
+                console.log("You win this round"); 
+                console.log(`Your score:${userScore} Computer Score:${compScore}`); 
+            }
+
+            else {
+                console.log(`Your move: ${userMove} Computer move: ${compMove}`);
+                console.log('This round is a tie');
+            }            
+
+
+            
+        })
+            
+    })
 
     playGame(); 
 
